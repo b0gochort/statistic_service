@@ -20,8 +20,14 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes(ctx *fasthttp.RequestCtx) {
 	ctx.Response.Header.Set("Content-Type", "application/json")
 	switch string(ctx.Path()) {
-	case "/new-chat":
-		ping(ctx)
+	case "/setOnline":
+		h.SetOnline(ctx)
+	case "/getOnline":
+		h.GetOnline(ctx)
+	case "/statHour":
+		h.GetStatHourByHour(ctx)
+	case "/statCategory":
+		h.GetStatCategory(ctx)
 	}
 }
 
